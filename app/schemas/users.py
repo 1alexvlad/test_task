@@ -42,7 +42,7 @@ class AdminUserAccountSchema(BaseModel):
     balance: Decimal
 
     class Config: 
-        from_attribute = True
+        from_attributes = True
 
 
 class AdminUserResponseSchema(BaseModel):
@@ -54,4 +54,24 @@ class AdminUserResponseSchema(BaseModel):
     accounts: list[AdminUserAccountSchema] = []
 
     class Config: 
-        from_attribute = True
+        from_attributes = True
+
+
+class SAdminUsersShow(BaseModel):
+    id: int 
+    email: EmailStr
+    full_name: str 
+
+    accounts: list[SAccount] = []
+
+    class Config: 
+        from_attributes = True
+
+class SUserUpdate(BaseModel):
+    email: EmailStr | None = None 
+    full_name: str | None = None 
+    is_admin: str | None = None 
+    pasword: str | None = None 
+
+    class Config: 
+        from_attributes = True

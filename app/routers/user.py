@@ -48,11 +48,6 @@ async def get_me(current_user: User = Depends(get_current_user)) -> SAboutMe:
     return SAboutMe(id=current_user.id, email=current_user.email, full_name=current_user.full_name)
 
 
-@router.get('/admin/me')
-async def get_me(current_user: User = Depends(get_current_admin)) -> SAboutMe:
-    return SAboutMe(id=current_user.id, email=current_user.email, full_name=current_user.full_name)
-
-
 @router.get('/accounts')
 async def get_user_accounts(current_user: User = Depends(get_current_user)) -> list[SAccount]:
     user_accounts = await AccountsServices.find_all(user_id=current_user.id)
