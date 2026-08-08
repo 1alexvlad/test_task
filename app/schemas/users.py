@@ -75,3 +75,10 @@ class SUserUpdate(BaseModel):
 
     class Config: 
         from_attributes = True
+
+class WebhookPaymentSchema(BaseModel):
+    transaction_id: str 
+    acccount_id: int 
+    user_id: int 
+    amount: Decimal 
+    signature: str
