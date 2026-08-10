@@ -78,10 +78,16 @@ class SUserUpdate(BaseModel):
 
 class WebhookPaymentSchema(BaseModel):
     transaction_id: str 
-    acccount_id: int 
+    account_id: int 
     user_id: int 
     amount: Decimal 
     signature: str
+
+class WebhookResponseSchema(BaseModel):
+    status: str
+    message: str
+    account_id: int | None = None
+    new_balance: Decimal | None = None
 
 class SToken(BaseModel):
     access_token: str

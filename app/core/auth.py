@@ -1,3 +1,4 @@
+import os
 from passlib.context import CryptContext
 from pydantic import EmailStr
 from datetime import datetime, timedelta, timezone
@@ -6,12 +7,11 @@ from jose import jwt, JWTError
 from services.users import UsersServices
 from core.config import settings
 
+from dotenv import load_dotenv
 
+load_dotenv()
 
-SECRET_KEY = '597f373bfa20c4af4023a664cdc4b0fe9c4113ce0457fd6f4013c5edb203e8de'
-ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-REFRESH_TOKEN_EXPIRE_DAYS=7
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 

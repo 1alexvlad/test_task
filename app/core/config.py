@@ -3,18 +3,17 @@ from pydantic import model_validator
 
 
 class Settings(BaseSettings):
-    DB_HOST: str = "localhost"
-    DB_PORT: int = 5432
-    DB_USER: str = "postgres"
-    DB_PASS: str = "postgres"
-    DB_NAME: str = "fastapi-task"
-    DATABASE_URL: str | None = None
+    DB_HOST: str 
+    DB_PORT: int 
+    DB_USER: str 
+    DB_PASS: str 
+    DB_NAME: str 
+    DATABASE_URL: str | None
 
-    SECRET_KEY: str = "597f373bfa20c4af4023a664cdc4b0fe9c4113ce0457fd6f4013c5edb203e8de"
-    ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
-
+    SECRET_KEY: str 
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int 
+    REFRESH_TOKEN_EXPIRE_DAYS: int 
 
 
 

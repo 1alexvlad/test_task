@@ -1,4 +1,5 @@
-import os 
+import os
+from dotenv import load_dotenv
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
@@ -8,14 +9,15 @@ from jose import JWTError, jwt
 from models.users import User
 from services.users import UsersServices
 
+load_dotenv()
 
 
-SECRET_KEY = '597f373bfa20c4af4023a664cdc4b0fe9c4113ce0457fd6f4013c5edb203e8de'
-ALGORITHM = 'HS256'
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALGORITHM = os.getenv('ALGORITHM')
 
 
 def get_toket(request: Request):
-    token = request.cookies.get("FastAPI-token")
+    token = request.cookies.get("fastapi_access_token")
     if not token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Токен отсутсвует')
     return token

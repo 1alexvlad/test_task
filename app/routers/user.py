@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Body, Cookie, HTTPException, status, Response, Depends
+from fastapi import APIRouter, Cookie, HTTPException, status, Response, Depends
 
 from models.users import User
-from core.dependencies import get_current_user, get_current_admin
-from schemas.users import SUserCreate, SUserLogin, SAboutMe, SAccount, SPayment, SToken, STokenData
+from core.dependencies import get_current_user
+from schemas.users import SUserCreate, SUserLogin, SAboutMe, SAccount, SPayment, SToken
 from services.users import UsersServices
 from services.accounts import AccountsServices
 from services.payments import PaymentsServices

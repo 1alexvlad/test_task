@@ -1,17 +1,21 @@
+import os
+from dotenv import load_dotenv
 import hashlib
 from fastapi import APIRouter, HTTPException, status
 
-from schemas.users import WebhookPaymentSchema
+from schemas.users import WebhookPaymentSchema, WebhookResponseSchema
 from services.payments import PaymentsServices
-from services.accounts import AccountsServices
+
+load_dotenv()
+
 
 router = APIRouter(prefix="/webhooks", tags=["Webhooks"])
 
-SECRET_KEY = '597f373bfa20c4af4023a664cdc4b0fe9c4113ce0457fd6f4013c5edb203e8de'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 @router.post('/payment')
-async def handle_payment_webhook(data: WebhookPaymentSchema):
+async def handle_payment_webhook(data: WebhookPaymentSchema) -> WebhookResponseSchema:
     amount_normalized = data.amount.normalize()
 
     if amount_normalized % 1 == 0:
