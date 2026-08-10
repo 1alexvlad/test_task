@@ -82,3 +82,11 @@ class WebhookPaymentSchema(BaseModel):
     user_id: int 
     amount: Decimal 
     signature: str
+
+class SToken(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+class STokenData(BaseModel):
+    user_id: int

@@ -9,7 +9,7 @@ from core.dependencies import get_current_admin
 from core.auth import get_password_hash
 
 
-router = APIRouter(prefix="/admin")
+router = APIRouter(prefix="/admin", tags=["Admin"])
 
 
 @router.get('/users')

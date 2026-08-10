@@ -8,8 +8,12 @@ from sqlalchemy import  pool
 from alembic import context
 from database import Base
 
-from models import User, Account, Payment
-from config import settings
+from models.accounts import Account
+from models.payments import Payment
+from models.token import RefreshToken
+from models.users import User
+
+from app.core.config import settings
 
 
 config = context.config

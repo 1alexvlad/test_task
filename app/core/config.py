@@ -10,8 +10,11 @@ class Settings(BaseSettings):
     DB_NAME: str = "fastapi-task"
     DATABASE_URL: str | None = None
 
-    SECRET_KEY: str = "mysecretpassword123456789"
+    SECRET_KEY: str = "597f373bfa20c4af4023a664cdc4b0fe9c4113ce0457fd6f4013c5edb203e8de"
     ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
 
 
 
@@ -22,7 +25,7 @@ class Settings(BaseSettings):
                 f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}"
                 f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
             )
-        return self  # ← Возвращаем self, а не строку!
-
+        return self  
+    
 settings = Settings()
     
